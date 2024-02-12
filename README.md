@@ -47,7 +47,7 @@ https://docs.qiime2.org/2023.5/install/native/#install-qiime-2-within-a-conda-en
 	Usar docker:
 https://docs.qiime2.org/2023.5/install/virtual/docker/
 
-`#951D1D`*1. Obteniendo los datos:*
+*1. Obteniendo los datos:*
 
 Crear un directorio para nuestros datos:
 mkdir qiime2-atacama-tutorial 
@@ -158,10 +158,10 @@ qiime2 permite generar diferentes métricas de diversidad, algunas de las cuales
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs.qza --o-alignment aligned-rep-seqs.qza --o-masked-alignment masked-aligned-rep-seqs.qza --o-tree unrooted-tree.qza --o-rooted-tree rooted-tree.qza
 
 Obtenemos los archivos:
-aligned-rep-seqs.qza
-masked-aligned-rep-seqs.qza
-unrooted-tree.qza
-rooted-tree.qza
++ aligned-rep-seqs.qza
++ masked-aligned-rep-seqs.qza
++ unrooted-tree.qza
++ rooted-tree.qza
 
 
 *8. Cálculo de diversidad alfa y beta:*
