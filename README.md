@@ -47,7 +47,7 @@ https://docs.qiime2.org/2023.5/install/native/#install-qiime-2-within-a-conda-en
 	Usar docker:
 https://docs.qiime2.org/2023.5/install/virtual/docker/
 
-#RRGGBB*1. Obteniendo los datos:*
+#951D1D*1. Obteniendo los datos:*
 
 Crear un directorio para nuestros datos:
 mkdir qiime2-atacama-tutorial 
