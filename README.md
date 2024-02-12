@@ -15,9 +15,9 @@ Para ello se seguirá la siguiente estructura:
   7. Análisis permanova y gráfico PCA
   8. Análisis taxónomico
 
-# PROCESO DE LA CREACIÓN DEL REPOSITORIO:
-
-1. Se crea un repositorio nuevo en Github con el nombre: Analisis_microbioma
 
 
+1. Descarga de secuencias:
+   
+   
 
