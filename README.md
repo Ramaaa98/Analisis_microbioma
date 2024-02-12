@@ -28,7 +28,6 @@ El repositorio creado se utilizará para la creación de la actividad grupal de 
 
 
 
-1. Descarga de secuencias:
    
 **Objetivos**
 
@@ -109,10 +108,9 @@ Este paso consiste en asociar las secuencias a las muestras correspondientes. Pa
 qiime demux emp-paired --m-barcodes-file sample-metadata.tsv --m-barcodes-column barcode-sequence --p-rev-comp-mapping-barcodes --i-seqs emp-paired-end-sequences.qza --o-per-sample-sequences demux-full.qza --o-error-correction-details demux-details.qza
 
 Archivos obtenidos: 
-demux-full.qza
 demux-details.qza
- 
-*4. Crear una submuestra:*
+  
+  *4. Crear una submuestra:*
 
 En este caso, solo estamos realizando este paso con fines demostrativos. Usualmente, uno debe tener una justificación para crear un subconjunto de sus datos. Seleccionaremos el 30 % de los datos presentes en la muestra. 
 
@@ -151,19 +149,6 @@ Archivos obtenidos:
 table.qza (tabla de OTUs, aquí llamados “features”) 
 rep-seqs.qza (Secuencias de los OTUs)
 denoising-stats.qza (estadísticas de la remoción de ruido)
-
-Podemos generar resúmenes de estos archivos:
-
-qiime feature-table summarize --i-table table.qza --o-visualization table.qzv --m-sample-metadata-file sample-metadata.tsv
-
-qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs.qzv
-
-qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats.qzv
-
-Obtenemos las visualizaciones:
-table.qzv
-denoising-stats.qzv
-rep-seqs.qzv
 
 
 *7. Generar un árbol para el análisis de diversidad filogenética:*
