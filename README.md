@@ -30,13 +30,11 @@ El repositorio creado se utilizará para la creación de la actividad grupal de 
 
 1. Descarga de secuencias:
    
-   
-
-Objetivos 
+**Objetivos**
 
 El objetivo de esta actividad es seguir los pasos para el análisis de datos de microbioma para entender en qué consiste cada uno, y poder sacar conclusiones de los datos obtenidos. 
 
-Pautas de elaboración
+**Pautas de elaboración**
 
 Empezaremos con datos crudos de secuenciación de microbiome y usaremos qiime2 para el análisis.
 
@@ -50,7 +48,7 @@ https://docs.qiime2.org/2023.5/install/native/#install-qiime-2-within-a-conda-en
 	Usar docker:
 https://docs.qiime2.org/2023.5/install/virtual/docker/
 
-1. Obteniendo los datos:
+*1. Obteniendo los datos:*
 
 Crear un directorio para nuestros datos:
 mkdir qiime2-atacama-tutorial 
@@ -93,7 +91,7 @@ curl -sL "https://data.qiime2.org/2023.5/tutorials/atacama-soils/10p/reverse.fas
 
 curl -sL "https://data.qiime2.org/2023.5/tutorials/atacama-soils/10p/barcodes.fastq.gz" > "emp-paired-end-sequences/barcodes.fastq.gz"
 
-2. Crear artefacto de qiime2 con las secuencias:
+*2. Crear artefacto de qiime2 con las secuencias:*
 
 Si recuerdas, qiime2 trabaja con archivos llamados artefactos, por lo que luego de descargar las secuencias debemos crear un artefacto con ellas. 
 
@@ -104,7 +102,7 @@ qiime tools import --type EMPPairedEndSequences --input-path emp-paired-end-sequ
 Archivo obtenido: 
 emp-paired-end-sequences.qza
 
-3. Demultiplex reads:
+*3. Demultiplex reads:*
 
 Este paso consiste en asociar las secuencias a las muestras correspondientes. Para esto necesitamos el archivo de metadatos, y debemos indicar la columna que contiene los “barcodes” de cada secuencia (esta columna se llama “barcode-equence”). En este caso, los reads de los barcodes son el complemento inverso de los presentes en el archivo de metadatos, por lo que incluimos la opción ‘’p-rev-com-mapping-barcodes”.
 
@@ -114,7 +112,7 @@ Archivos obtenidos:
 demux-full.qza
 demux-details.qza
  
-4. Crear una submuestra:
+*4. Crear una submuestra:*
 
 En este caso, solo estamos realizando este paso con fines demostrativos. Usualmente, uno debe tener una justificación para crear un subconjunto de sus datos. Seleccionaremos el 30 % de los datos presentes en la muestra. 
 
@@ -132,7 +130,7 @@ demux-subsample.qza
 Visualización obtenida (recuerda que puedes visualizar los archivos qzv en https://view.qiime2.org/):
 demux-subsample.qzv
 
-5. Filtrar muestras que tienen menos de 100 reads:
+*5. Filtrar muestras que tienen menos de 100 reads:*
 
 En la visualización obtenida en el paso anterior podemos ver que algunas muestras tienen menos de 100 reads. Esto se considera una cobertura insuficiente, por lo que filtraremos estas muestras. 
 
@@ -143,7 +141,7 @@ qiime demux filter-samples --i-demux demux-subsample.qza --m-metadata-file ./dem
 Archivo obtenido: 
 demux.qza
 
-6. Revisar calidad y realizar “denoising”:
+*6. Revisar calidad y realizar “denoising”:*
 
 En este paso cortaremos las 13 primeras bases de cada read (pueden pertenecer a partidores y adaptadores) y seleccionaremos las secuencias de un largo de 150 nucleótidos. 
 
@@ -168,7 +166,7 @@ denoising-stats.qzv
 rep-seqs.qzv
 
 
-7. Generar un árbol para el análisis de diversidad filogenética:
+*7. Generar un árbol para el análisis de diversidad filogenética:*
 
 qiime2 permite generar diferentes métricas de diversidad, algunas de las cuales necesitan de árboles filogenéticos para calcular los índices. Alinearemos las secuencias con mafft, y FastTree para la generación del árbol sin raíz, y luego se agregará la raíz.
 
@@ -181,7 +179,7 @@ unrooted-tree.qza
 rooted-tree.qza
 
 
-8. Cálculo de diversidad alfa y beta:
+*8. Cálculo de diversidad alfa y beta:*
 
 Calcularemos varias métricas de diversidad y generaremos gráficos de PCoA con los datos obtenidos. Las métricas que calcularemos son:
 
@@ -196,8 +194,6 @@ Calcularemos varias métricas de diversidad y generaremos gráficos de PCoA con 
 •	Bray-Curtis distance (medida cuantitativa de disimilitud de la comunidad)
 •	unweighted UniFrac distance (medida cualitativa de disimilitud de la comunidad que incorpora relaciones filogenéticas entre “features”)
 •	weighted UniFrac distance (medida cuantitativa de disimilitud de la comunidad que incorpora relaciones filogenéticas entre “features”)
- 
-PREGUNTA: ¿Qué profundidad de muestreo debemos seleccionar? Observa cuántas secuencias tienen cada muestra visualizando la tabla table.qzv y selecciona la profundidad de muestreo (pista: ¿cuáles son los valores menores y mayores de secuencias en una muestra? ¿Cuál es la mediana? ¿Y el promedio? ¿Qué valor permitirá que mantengamos la mayor cantidad de muestras posibles?). Según este número realizaremos el paso de rarefacción de muestras.
 
 Rarefacción y cálculo de diversidad (reemplaza el número que sigue a “p-sampling-depth” con el que tú has seleccionado):
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table table.qza --p-sampling-depth 1103 --m-metadata-file sample-metadata.tsv --output-dir core-metrics-results
@@ -240,7 +236,7 @@ qiime emperor plot --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results
 Visualización obtenida:
 core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
 
-9. Análisis taxonómico:
+*9. Análisis taxonómico:*
 
 Clasificaremos nuestros “features” de acuerdo a la taxonomía de la base de datos Greengenes. Para esto, hay que descargar la base de datos:
 Descarga manual:
@@ -259,8 +255,6 @@ taxonomy.qza
 gg-13-8-99-515-806-nb-classifier.qza
 Visualizaciones obtenidas:
 taxonomy.qzv
-
-PREGUNTA: ¿Qué pasa si evaluamos algunas de las secuencias con BLAST? ¿Son las clasificaciones taxonómicas diferentes a las de qiime2? ¿A qué nivel taxonómico surgen las diferencias?
 
 10. Análisis diferencial de abundancia microbiana:
 Preparar tabla:
@@ -286,3 +280,4 @@ gut-table-l6.qza
 comp-gut-table-l6.qza
 Visualización obtenida:
 l6-ancom-subject.qzv
+
