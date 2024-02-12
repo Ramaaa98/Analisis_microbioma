@@ -108,7 +108,7 @@ Este paso consiste en asociar las secuencias a las muestras correspondientes. Pa
 qiime demux emp-paired --m-barcodes-file sample-metadata.tsv --m-barcodes-column barcode-sequence --p-rev-comp-mapping-barcodes --i-seqs emp-paired-end-sequences.qza --o-per-sample-sequences demux-full.qza --o-error-correction-details demux-details.qza
 
 Archivos obtenidos: 
-demux-details.qza
++ demux-details.qza
 
 *4. Crear una submuestra:*
 
@@ -123,10 +123,10 @@ Crear visualización para conocer cuantas secuencias tenemos por muestra:
 qiime demux summarize --i-data demux-subsample.qza --o-visualization demux-subsample.qzv
 
 Archivo obtenido: 
-demux-subsample.qza
++ demux-subsample.qza
 
 Visualización obtenida (recuerda que puedes visualizar los archivos qzv en https://view.qiime2.org/):
-demux-subsample.qzv
++ demux-subsample.qzv
 
 *5. Filtrar muestras que tienen menos de 100 reads:*
 
@@ -137,7 +137,7 @@ qiime tools export --input-path demux-subsample.qzv --output-path ./demux-subsam
 qiime demux filter-samples --i-demux demux-subsample.qza --m-metadata-file ./demux-subsample/per-sample-fastq-counts.tsv --p-where 'CAST([forward sequence count] AS INT) > 100' --o-filtered-demux demux.qza
 
 Archivo obtenido: 
-demux.qza
++ demux.qza
 
 *6. Revisar calidad y realizar “denoising”:*
 
@@ -146,9 +146,9 @@ En este paso cortaremos las 13 primeras bases de cada read (pueden pertenecer a 
 qiime dada2 denoise-paired --i-demultiplexed-seqs demux.qza --p-trim-left-f 13 --p-trim-left-r 13 --p-trunc-len-f 150 --p-trunc-len-r 150 --o-table table.qza --o-representative-sequences rep-seqs.qza --o-denoising-stats denoising-stats.qza
 
 Archivos obtenidos:
-table.qza (tabla de OTUs, aquí llamados “features”) 
-rep-seqs.qza (Secuencias de los OTUs)
-denoising-stats.qza (estadísticas de la remoción de ruido)
++ table.qza (tabla de OTUs, aquí llamados “features”) 
++ rep-seqs.qza (Secuencias de los OTUs)
++ denoising-stats.qza (estadísticas de la remoción de ruido)
 
 
 *7. Generar un árbol para el análisis de diversidad filogenética:*
@@ -184,15 +184,15 @@ Rarefacción y cálculo de diversidad (reemplaza el número que sigue a “p-sam
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table table.qza --p-sampling-depth 1103 --m-metadata-file sample-metadata.tsv --output-dir core-metrics-results
 
 Visualizaciones obtenidas:
-core-metrics-results/unweighted_unifrac_emperor.qzv
-core-metrics-results/jaccard_emperor.qzv
-core-metrics-results/bray_curtis_emperor.qzv
-core-metrics-results/weighted_unifrac_emperor.qzv
++ core-metrics-results/unweighted_unifrac_emperor.qzv
++ core-metrics-results/jaccard_emperor.qzv
++ core-metrics-results/bray_curtis_emperor.qzv
++ core-metrics-results/weighted_unifrac_emperor.qzv
 
 Luego, podemos agrupar los reultados según metadatos (luego de “--i-alpha-diversity” puedes cambiar el archivo por el de otra métrica de diversidad, por ejemplo “core-metrics-results/bray_curtis_pcoa_results.qza”):
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics-results/faith_pd_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics-results/faith-pd-group-significance.qzv
 El nombre de la visualización obtenida se verá así (“nombre-de-métrica-significance.qzv”):
-core-metrics-results/faith-pd-group-significance.qzv
++ core-metrics-results/faith-pd-group-significance.qzv
 
 
 Análisis PERMANOVA de diversidad beta: 
@@ -201,11 +201,11 @@ Aquí, podemos cambiar las variables “--i-distance-matrix” por otra métrica
 qiime diversity beta-group-significance --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza --m-metadata-file sample-metadata.tsv --m-metadata-column transect-name --o-visualization core-metrics-results/unweighted-unifrac-body-site-significance.qzv --p-pairwise
 
 Visualización obtenida:
-core-metrics-results/unweighted-unifrac-transect-name-significance.qzv
++ core-metrics-results/unweighted-unifrac-transect-name-significance.qzv
 
 Gráfico PCoA:
 
-qiime emperor plot --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza --m-metadata-file sample-metadata.tsv --p-custom-axes days-since-experiment-start --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
++ qiime emperor plot --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza --m-metadata-file sample-metadata.tsv --p-custom-axes days-since-experiment-start --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
 
 
 *9. Análisis taxonómico:*
@@ -224,7 +224,7 @@ Crear tabla con taxonomía:
 qiime metadata tabulate --m-input-file taxonomy.qza --o-visualization taxonomy.qzv
 
 Visualizaciones obtenidas:
-taxonomy.qzv
++ taxonomy.qzv
 
 
 
