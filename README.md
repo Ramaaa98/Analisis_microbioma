@@ -8,9 +8,14 @@ El repositorio creado se utilizará para la creación de la actividad grupal de 
 # **Para la creación del siguiente repositorio se han seguido los siguientes pasos:**
 1. Creación del repositorio de dominio público y la posterior adición de los colaboradores
    ![Alt text](img/t1.png)
-   
+2. Clonación del repositorio en dispositivo local.
+3. Creación de los directorios necesarios.
+4.  Sincronización del repositorio
 
-Para ello se seguirá la siguiente estructura: 
+
+## La actividad utilizad
+
+# Para ello se seguirá la siguiente estructura: 
   1. Descarga de secuencias
   2. Artefacto qiime2 con las secuencias
   3. Demultiplex y filtrado
