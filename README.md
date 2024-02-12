@@ -158,10 +158,10 @@ qiime2 permite generar diferentes métricas de diversidad, algunas de las cuales
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs.qza --o-alignment aligned-rep-seqs.qza --o-masked-alignment masked-aligned-rep-seqs.qza --o-tree unrooted-tree.qza --o-rooted-tree rooted-tree.qza
 
 Obtenemos los archivos:
-aligned-rep-seqs.qza
-masked-aligned-rep-seqs.qza
-unrooted-tree.qza
-rooted-tree.qza
+   aligned-rep-seqs.qza
+   masked-aligned-rep-seqs.qza
+   unrooted-tree.qza
+   rooted-tree.qza
 
 
 *8. Cálculo de diversidad alfa y beta:*
