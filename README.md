@@ -5,6 +5,11 @@ Usuarios del repositorio: Ignacio Capelo Gimenez, Rama Hafian Al-Homsi, Alberto 
 
 El repositorio creado se utilizará para la creación de la actividad grupal de la materia Introducción a la programación científica. Donde se subirá el procedimiento para el análisis de datos de microbioma. Los datos utilizados serán los proporcionados en la Actividad 2 de Secuenciación y Ómicas.
 
+# **Para la creación del siguiente repositorio se han seguido los siguientes pasos:**
+1. Creación del repositorio de dominio público y la posterior adición de los colaboradores
+   ![Alt text](img/t1.png)
+   
+
 Para ello se seguirá la siguiente estructura: 
   1. Descarga de secuencias
   2. Artefacto qiime2 con las secuencias
