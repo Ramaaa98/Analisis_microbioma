@@ -9,11 +9,12 @@ El repositorio creado se utilizará para la creación de la actividad grupal de 
 1. Creación del repositorio de dominio público y la posterior adición de los colaboradores
    ![Alt text](img/img_1.jpeg)
 2. Clonación del repositorio en dispositivo local.
-3. Creación de los directorios necesarios.
-4.  Sincronización del repositorio
+3.   ![Alt text](img/img_2.png)
+4. Creación de los directorios necesarios.
+   ![Alt text](img/img_3.png)
+6.  Sincronización del repositorio
+    ![Alt text](img/img_4.png)
 
-
-## La actividad utilizad
 
 # Para ello se seguirá la siguiente estructura: 
   1. Descarga de secuencias
