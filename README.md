@@ -182,30 +182,18 @@ Calcularemos varias métricas de diversidad y generaremos gráficos de PCoA con 
 
 Rarefacción y cálculo de diversidad (reemplaza el número que sigue a “p-sampling-depth” con el que tú has seleccionado):
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table table.qza --p-sampling-depth 1103 --m-metadata-file sample-metadata.tsv --output-dir core-metrics-results
-Archivos obtenidos:
-core-metrics-results/faith_pd_vector.qza
-core-metrics-results/unweighted_unifrac_distance_matrix.qza
-core-metrics-results/bray_curtis_pcoa_results.qza
-core-metrics-results/shannon_vector.qza
-core-metrics-results/rarefied_table.qza
-core-metrics-results/weighted_unifrac_distance_matrix.qza
-core-metrics-results/jaccard_pcoa_results.qza
-core-metrics-results/weighted_unifrac_pcoa_results.qza
-core-metrics-results/observed_features_vector.qza
-core-metrics-results/jaccard_distance_matrix.qza
-core-metrics-results/evenness_vector.qza
-core-metrics-results/bray_curtis_distance_matrix.qza
-core-metrics-results/unweighted_unifrac_pcoa_results.qza
+
 Visualizaciones obtenidas:
 core-metrics-results/unweighted_unifrac_emperor.qzv
 core-metrics-results/jaccard_emperor.qzv
 core-metrics-results/bray_curtis_emperor.qzv
 core-metrics-results/weighted_unifrac_emperor.qzv
+
 Luego, podemos agrupar los reultados según metadatos (luego de “--i-alpha-diversity” puedes cambiar el archivo por el de otra métrica de diversidad, por ejemplo “core-metrics-results/bray_curtis_pcoa_results.qza”):
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics-results/faith_pd_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics-results/faith-pd-group-significance.qzv
 El nombre de la visualización obtenida se verá así (“nombre-de-métrica-significance.qzv”):
 core-metrics-results/faith-pd-group-significance.qzv
-PREGUNTA: ¿Qué categorías de metadatos están asociadas con más fuerza con las diferencias en riqueza de la comunidad? ¿Y con igualdad?
+
 
 Análisis PERMANOVA de diversidad beta: 
 
@@ -218,8 +206,7 @@ core-metrics-results/unweighted-unifrac-transect-name-significance.qzv
 Gráfico PCoA:
 
 qiime emperor plot --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza --m-metadata-file sample-metadata.tsv --p-custom-axes days-since-experiment-start --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
-Visualización obtenida:
-core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
+
 
 *9. Análisis taxonómico:*
 
@@ -235,34 +222,10 @@ Clasificación taxonómica:
 qiime feature-classifier classify-sklearn --i-classifier gg-13-8-99-515-806-nb-classifier.qza --i-reads rep-seqs.qza --o-classification taxonomy.qza
 Crear tabla con taxonomía:
 qiime metadata tabulate --m-input-file taxonomy.qza --o-visualization taxonomy.qzv
-Archivos obtenidos:
-taxonomy.qza
-gg-13-8-99-515-806-nb-classifier.qza
+
 Visualizaciones obtenidas:
 taxonomy.qzv
 
-10. Análisis diferencial de abundancia microbiana:
-Preparar tabla:
-qiime composition add-pseudocount --i-table table.qza --o-composition-table comp-table.qza
-Archivo obtenido:
-comp-table.qza
 
-Correr AMCO (para análisis diferencial):
-qiime composition ancom --i-table comp-table.qza --m-metadata-file sample-metadata.tsv --m-metadata-column subject --o-visualization ancom-subject.qzv
-Visualización obtenida:
-ancom-subject.qzv
 
-Agregar taxonomía:
-Aquí podemos cambiar la variable “‘p-level” por otro número, para tener otro nivel taxonómico.
-qiime taxa collapse --i-table table.qza --i-taxonomy taxonomy.qza --p-level 6 --o-collapsed-table table-l6.qza
-
-qiime composition add-pseudocount --i-table gut-table-l6.qza --o-composition-table comp-gut-table-l6.qza
-
-qiime composition ancom --i-table comp-gut-table-l6.qza --m-metadata-file sample-metadata.tsv --m-metadata-column subject --o-visualization l6-ancom-subject.qzv
-
-Archivos obtenidos:
-gut-table-l6.qza
-comp-gut-table-l6.qza
-Visualización obtenida:
-l6-ancom-subject.qzv
 
