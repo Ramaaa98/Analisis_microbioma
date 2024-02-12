@@ -1,5 +1,5 @@
 # Máster Bioinformática. UNIR
-# ACTIVIDAD GRUPAL_INTRODUCCIÓN A LA PROGRAMACIÓN
+# ACTIVIDAD GRUPAL INTRODUCCIÓN A LA PROGRAMACIÓN
 # Análisis_microbioma
 Usuarios del repositorio: Ignacio Capelo Gimenez, Rama Hafian Al-Homsi, Alberto Meca Zapata.
 
