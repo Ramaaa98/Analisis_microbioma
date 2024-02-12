@@ -109,7 +109,7 @@ qiime demux emp-paired --m-barcodes-file sample-metadata.tsv --m-barcodes-column
 
 Archivos obtenidos: 
 demux-details.qza
-  
+
 *4. Crear una submuestra:*
 
 En este caso, solo estamos realizando este paso con fines demostrativos. Usualmente, uno debe tener una justificación para crear un subconjunto de sus datos. Seleccionaremos el 30 % de los datos presentes en la muestra. 
